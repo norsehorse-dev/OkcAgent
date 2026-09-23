@@ -15,13 +15,26 @@ object Provider {
 	const val ACTION_SSH = "org.openintents.ssh.authentication.ISshAuthenticationService"
 	const val ACTION_OPENPGP = "org.openintents.openpgp.IOpenPgpService2"
 
+	const val PGPONY_PACKAGE = "com.pgpony.android"
+
+	/**
+	 * The chosen provider, or with no choice made: OpenKeychain when it is
+	 * installed (the upstream behavior), else PGPony when it is installed,
+	 * else OpenKeychain (so the "not installed" screen points there).
+	 */
 	fun packageId(context: Context): String =
 		PreferenceManager.getDefaultSharedPreferences(context)
 			.getString(context.getString(R.string.key_provider), null)
 			?.takeIf { it.isNotEmpty() }
-			?: DEFAULT_PACKAGE
+			?: when {
+				isInstalled(context, DEFAULT_PACKAGE) -> DEFAULT_PACKAGE
+				isInstalled(context, PGPONY_PACKAGE) -> PGPONY_PACKAGE
+				else -> DEFAULT_PACKAGE
+			}
 
-	fun isInstalled(context: Context, pkg: String = packageId(context)): Boolean = try {
+	fun isInstalled(context: Context): Boolean = isInstalled(context, packageId(context))
+
+	fun isInstalled(context: Context, pkg: String): Boolean = try {
 		context.packageManager.getPackageInfo(pkg, 0)
 		true
 	} catch (_: PackageManager.NameNotFoundException) {

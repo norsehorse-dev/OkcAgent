@@ -8,6 +8,7 @@
 
 	<queries>
 		<package android:name="org.sufficientlysecure.keychain" />
+		<package android:name="com.pgpony.android" />
 		<intent>
 			<action android:name="org.openintents.ssh.authentication.ISshAuthenticationService" />
 		</intent>
@@ -68,10 +69,6 @@
 			android:name=".SettingsActivity"
 			android:label="@string/text_settings"
 			android:theme="@style/AppTheme" />
-
-		<meta-data
-			android:name="com.bugsnag.android.API_KEY"
-			android:value="c496f0ee52d0394718d46bd1113a0b9b" />
 	</application>
 
 </manifest>

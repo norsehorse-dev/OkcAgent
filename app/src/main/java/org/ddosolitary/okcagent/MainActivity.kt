@@ -13,11 +13,9 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import org.ddosolitary.okcagent.gpg.GpgApi
 import org.ddosolitary.okcagent.ssh.SshApi
 import org.ddosolitary.okcagent.ssh.SshKeyInfo
@@ -194,26 +192,6 @@ class MainActivity : AppCompatActivity() {
 			textGpg.setText(R.string.text_no_gpg_key)
 		} else {
 			textGpg.text = getString(R.string.text_has_gpg_key).format(gpgKeyId)
-		}
-
-		val settingsPref = PreferenceManager.getDefaultSharedPreferences(this)
-		if (!settingsPref.contains(getString(R.string.key_error_reporting))) {
-			MaterialAlertDialogBuilder(this)
-				.setTitle(R.string.text_error_reporting)
-				.setMessage(R.string.text_error_reporting_message)
-				.setPositiveButton(R.string.button_yes) { _, _ ->
-					settingsPref.edit().run {
-						putBoolean(getString(R.string.key_error_reporting), true)
-						apply()
-					}
-				}
-				.setNegativeButton(R.string.button_no) { _, _ ->
-					settingsPref.edit().run {
-						putBoolean(getString(R.string.key_error_reporting), false)
-						apply()
-					}
-				}
-				.show()
 		}
 	}
 

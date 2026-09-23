@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlinx-serialization'
-apply plugin: "com.bugsnag.android.gradle"
 
 android {
 	compileSdkVersion 31
@@ -36,5 +35,4 @@ dependencies {
 	implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 	implementation "androidx.preference:preference-ktx:1.1.1"
 	implementation 'com.google.android.material:material:1.4.0'
-	implementation "com.bugsnag:bugsnag-android:5.14.0"
 }
