@@ -1,5 +1,28 @@
 # OkcAgent
 
+> **Maintained fork.** Upstream OkcAgent has had no commits since 2021 and no
+> longer builds (its API libraries were only on jcenter, which is gone). This
+> fork, kept alongside [PGPony](https://pgpony.app), changes three things:
+>
+> - **Crypto provider setting:** Settings, Crypto provider lists every
+>   installed app that offers the SSH authentication API or the OpenPGP API.
+>   OpenKeychain stays the default; when it is not installed, PGPony is used.
+> - **Builds again:** the openpgp-api and sshauthentication-api sources
+>   (Apache-2.0) are bundled instead of fetched from jcenter.
+> - **No error reporting:** the Bugsnag crash reporter is removed, so the app
+>   sends nothing anywhere.
+>
+> It keeps the package name `org.ddosolitary.okcagent`, so the stock Termux
+> package (`pkg install okc-agents`) works with it unchanged. Because it is
+> signed with a different key, uninstall an existing OkcAgent first.
+>
+> On Android 13 and up, allow OkcAgent's notifications: when your key needs a
+> passphrase or a hardware key tap, OkcAgent asks through a notification, and
+> without it ssh waits forever.
+>
+> Build with JDK 11 (Gradle 7.2 does not run on newer JDKs):
+> `JAVA_HOME=$(/usr/libexec/java_home -v 11) ./gradlew assembleRelease`
+
 ![Build status](https://github.com/DDoSolitary/OkcAgent/workflows/.github/workflows/build.yml/badge.svg)
 
 A utility that makes OpenKeychain available in your Termux shell.
