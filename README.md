@@ -20,6 +20,9 @@
 > passphrase or a hardware key tap, OkcAgent asks through a notification, and
 > without it ssh waits forever.
 >
+> On GrapheneOS, also grant OkcAgent the Network permission. Termux talks to
+> OkcAgent over a local connection, and with Network off every request hangs.
+>
 > Build with JDK 11 (Gradle 7.2 does not run on newer JDKs):
 > `JAVA_HOME=$(/usr/libexec/java_home -v 11) ./gradlew assembleRelease`
 
