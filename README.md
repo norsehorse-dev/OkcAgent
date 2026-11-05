@@ -1,5 +1,7 @@
 # OkcAgent
 
+### Fork description
+> [!NOTE]
 > **Maintained fork.** Upstream OkcAgent has had no commits since 2021 and no
 > longer builds (its API libraries were only on jcenter, which is gone). This
 > fork, kept alongside [PGPony](https://pgpony.app), changes three things:
@@ -25,6 +27,27 @@
 >
 > Build with JDK 11 (Gradle 7.2 does not run on newer JDKs):
 > `JAVA_HOME=$(/usr/libexec/java_home -v 11) ./gradlew assembleRelease`
+>
+
+### Verification of releases
+
+To check the signer with [`AppVerifier`](https://github.com/soupslurpr/AppVerifier), paste this text as the verification info:
+
+```
+org.ddosolitary.okcagent
+9F:8F:90:70:69:FB:5C:0C:87:C7:E4:15:9D:80:2A:70:29:E1:90:05:11:42:47:DC:66:49:D5:20:5B:4B:CA:C3
+```
+
+There is also a detached signature artifact ([`OkcAgent-0.3.0.apk.asc`](https://github.com/norsehorse-dev/OkcAgent/releases/download/v0.3.0/OkcAgent-0.3.0.apk.asc)) included in the release. It uses the same signing key[^pubkey] as [PGPony](https://pgpony.app/pgp-key.php) with the following fingerprint[^fingerprint-record]:
+
+```
+A0CBC8F65AACE56F1C5B767753F9798E4919DE62
+```
+
+[^pubkey]: https://github.com/norsehorse-dev/PGPonyAndroid/releases/download/v4.7.0/NorseHorse-release-key.asc
+[^fingerprint-record]: https://github.com/norsehorse-dev/PGPonyAndroid/releases/download/v4.7.0/PGPony-4.7.0-signing-keys.txt
+
+--------
 
 ![Build status](https://github.com/DDoSolitary/OkcAgent/workflows/.github/workflows/build.yml/badge.svg)
 
