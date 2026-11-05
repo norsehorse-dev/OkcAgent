@@ -51,7 +51,6 @@ A0CBC8F65AACE56F1C5B767753F9798E4919DE62
 
 ![Build status](https://github.com/DDoSolitary/OkcAgent/workflows/.github/workflows/build.yml/badge.svg)
 
-
 A utility that makes OpenKeychain available in your Termux shell.
 
 ## Features
